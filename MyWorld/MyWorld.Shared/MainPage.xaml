@@ -1,0 +1,18 @@
+﻿<Page
+    x:Class="MyWorld.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MyWorld"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <NavigationView IsSettingsVisible="False" IsBackButtonVisible="Visible">
+        <NavigationView.MenuItems>
+            <NavigationViewItem x:Name="Home" Icon="Home" Content="Home"/>
+            <NavigationViewItem x:Name="Stories" Icon="Library" Content="My Programming Stories"/>
+            <NavigationViewItem x:Name="Activities" Icon="OutlineStar" Content="My Activities"/>
+            <NavigationViewItem x:Name="Tools" Icon="Setting" Content="My Tools"/>
+        </NavigationView.MenuItems>
+    </NavigationView>
+</Page>
