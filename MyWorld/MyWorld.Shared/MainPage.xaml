@@ -68,7 +68,7 @@
                 <TextBlock Text="Uses icons from freeicons.io"/>
             </StackPanel>
         </muxc:NavigationView.PaneFooter>
-        <Frame x:Name="ContentFrame">
+        <Frame x:Name="ContentFrame" x:FieldModifier="Public">
         </Frame>
     </muxc:NavigationView>
 </Page>

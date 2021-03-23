@@ -86,10 +86,26 @@ namespace MyWorld
                     // configuring the new page by passing required information as a navigation
                     // parameter
                     rootFrame.Navigate(typeof(MainPage), e.Arguments);
+
+#if __WASM__
+                    // Lets this web app support direct links to other locations.
+                    if (!string.IsNullOrWhiteSpace(e.Arguments))
+                    {
+                        var parameters = System.Web.HttpUtility.ParseQueryString(e.Arguments);
+                        var location = parameters.Get("location");
+                        if (!string.IsNullOrWhiteSpace(location))
+                        {
+                            Console.WriteLine($"Redirecting to: {location}");
+                            (rootFrame.Content as MainPage).ContentFrame.NavigateToLocation(location);
+                        }
+                    }
+#endif
                 }
                 // Ensure the current window is active
                 window.Activate();
             }
+
+            Console.WriteLine($"Arguments: {e.Arguments}");
         }
 
         /// <summary>
