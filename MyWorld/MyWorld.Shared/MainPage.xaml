@@ -9,7 +9,13 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <muxc:NavigationView x:Name="NavView" IsSettingsVisible="False" IsBackButtonVisible="Visible" PaneClosed="NavigationView_PaneClosed" PaneOpening="NavigationView_PaneOpening">
+    <muxc:NavigationView x:Name="NavView" 
+                         IsSettingsVisible="False" 
+                         IsBackButtonVisible="Visible"
+                         CompactModeThresholdWidth="0"
+                         ExpandedModeThresholdWidth="1008"
+                         PaneClosed="NavigationView_PaneClosed" 
+                         PaneOpening="NavigationView_PaneOpening">
         <muxc:NavigationView.PaneTitle>
             trungnt2910's World
         </muxc:NavigationView.PaneTitle>
