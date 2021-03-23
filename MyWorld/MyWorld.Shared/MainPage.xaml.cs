@@ -13,7 +13,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
+// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
 namespace MyWorld
 {
@@ -25,17 +25,17 @@ namespace MyWorld
         public MainPage()
         {
             this.InitializeComponent();
-            ContentFrame.Navigate(typeof(HomePage));
+            ContentFrame.Navigate(typeof(Pages.HomePage));
         }
 
         private void Home_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            ContentFrame.Navigate(typeof(HomePage));
+            ContentFrame.Navigate(typeof(Pages.HomePage));
         }
 
         private void Stories_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            ContentFrame.Navigate(typeof(StoriesPage));
+            ContentFrame.Navigate(typeof(Pages.StoriesPage));
         }
 
         private void Activities_Tapped(object sender, TappedRoutedEventArgs e)
@@ -56,6 +56,11 @@ namespace MyWorld
         private void NavigationView_PaneOpening(Microsoft.UI.Xaml.Controls.NavigationView sender, object args)
         {
             InfoFooter.Visibility = Visibility.Visible;
+        }
+
+        private void Stories_EarlyLife_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            ContentFrame.Navigate(typeof(Pages.Stories.EarlyLife));
         }
     }
 }

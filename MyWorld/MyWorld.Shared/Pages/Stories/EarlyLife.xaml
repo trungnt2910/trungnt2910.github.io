@@ -1,0 +1,33 @@
+﻿<Page
+    x:Class="MyWorld.Pages.Stories.EarlyLife"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MyWorld.Pages.Stories"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <ScrollViewer>
+        <StackPanel>
+            <TextBlock Style="{StaticResource HeaderTextBlockStyle}" Text="My early life"/>
+            <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="Before my first &quot;Hello World&quot;."/>
+            <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text=""/>
+            <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text="Born in the age when computers become common everywhere, I couldn't help marvelling at their powers. They make difficult calculations in the blink of an eye, with perfect precision. They seem to know everything, from the current time and date, to the history of the whole world."/>
+            <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text=""/>
+            <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text="Computers, including huge desktops, laptops, to the pocket-sized smartphones, are also an essential part of my entertainment. Instead of waiting for the television broadcast, I went on YouTube to watch my favorite children's music videos, as well as episodes of &quot;Thomas the Tank Engine&quot;. But the one aspect that captured most of my attention were video games."/>
+            <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text=""/>
+            <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text="Like most other boys of my age, I was fascinated by the world of video games. I loved the sounds and videos, the adventure, the thrill, the joy of actually being the main character of a film. But rather than just try to defeat the boss, get a high score and boast with friends, I take games to another level: Trying to actually beat the developers."/>
+            <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text=""/>
+            <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text="In order to keep players addicted, developers create ultra hard levels, forcing gamers to spend either time to practice or money to buy bonus items. I had neither. So the idea came to me: Why did I have to be a slave, of a thing that runs on my smartphone - my little kingdom?"/>
+            <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text=""/>
+            <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text="I downloaded GameGuardian, and started inspecting games. That's how I got my first look in a piece of software. The result seems like random letters and numbers, which may only appear in advanced maths cources, but finally I learnt about them all. The numbers are actually variables which the game uses, and the seemingly random tags are their addresses in the device's memory. And they aren't just plain numbers. They were ints, longs, floats, doubles,... each serving a different purpose. After a few attempts on searching and analyzing the change of values, I quickly found which variable was the health, which was the score, and which contained the gold. I also learned that if I had more than two billion coins, the game would somehow &quot;punish&quot; me for my greed, and make the value negative."/>
+            <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text=""/>
+            <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text="Apart from manipulating games, I used numerous tools to customize my devices to the greatest extent, including cleaning unwanted apps, changing icons, and upgrading the OS version way beyond the maximum supported. But I was still a slave: I knew what the tools do to my phone, but I could neither see in detail their activities, nor re-create them. That's when I decided to take my final step to truely rule my devices: learning how to program them."/>
+            <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text=""/>
+            <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text="The first thing I ever programmed was in Scratch - a programming interface using just drag and drop puzzle pieces. I re-implemented the famous dinosaur game in Google Chrome, and it actually worked. The project was the first time I used variables, functions, loops, conditions, and practiced the simplest form of event-driven and object-oriented programming."/>
+            <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text=""/>
+            <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text="I wasn't satisfied. Scratch might be fun for beginners, but I wanted to make real applications. That's when I started watching about programming for the Universal Windows Platform - a promising framework that allows applications to run on various different types of devices. But before finishing the installation of Visual Studio, and writing the first line of C#, I had other, more urgent tasks. It was the end of my eighth year, a time when students in Vietnam, especially Hanoi, have to study hard for the high school entrance examination - a contest that may decide the fate for the rest of one's lives. So I shut down my computer, longing for the time the journey continues, with the desire to create applications never fading from my mind."/>
+        </StackPanel>
+    </ScrollViewer>
+</Page>

@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="MyWorld.HomePage"
+    x:Class="MyWorld.Pages.HomePage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:MyWorld"
@@ -18,13 +18,13 @@
             <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text="Education:"/>
             <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text=" - Studied at Hoang Hoa Tham Primary School"/>
             <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text=" - Studied at Phan Chu Trinh Secondary School"/>
-            <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text=" - Currently a 11th grade student at Hanoi - Amsterdam High school for the Gifted"/>
+            <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text=" - Currently a 11th grade student at Hanoi - Amsterdam High school for the Gifted."/>
             <TextBlock Text=""/>
             <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="Skills"/>
             <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text=" - .NET development using C# and XAML, in various fields: Library, Console, Desktop, Mobile, and Web."/>
             <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text=" - C++ library and application development."/>
-            <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text=" - Basic understanding of computer algorithms."/>
-            <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text=" - Teaching and teamwork, after my experiences in GreenAms Robotics Team."/>
+            <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text=" - Basic understanding of algorithms, such as binary search, dynamic programming, graph theory, and data structures."/>
+            <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text=" - Teaching and teamwork, after my experiences in various activities."/>
             <TextBlock Text=""/>
             <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="Interests"/>
             <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text="Having the ability to code, I am committed to create solutions for the community, as well as contributing to various open source projects, such as the Haiku operating system, and the Mono project."/>

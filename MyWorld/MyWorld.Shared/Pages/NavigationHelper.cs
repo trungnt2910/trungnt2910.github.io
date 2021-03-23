@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MyWorld
+namespace MyWorld.Pages
 {
     public static class NavigationHelper
     {
         private static Dictionary<string, Type> PageMap = new Dictionary<string, Type>
         {
             { "Home", typeof(HomePage) },
-            { "Stories", typeof(StoriesPage) }
+            { "Stories", typeof(StoriesPage) },
+            { "Stories/EarlyLife", typeof(Stories.EarlyLife) }
         };
 
         public static bool NavigateToLocation(this Windows.UI.Xaml.Controls.Frame frame, string location)

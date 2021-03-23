@@ -6,7 +6,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <muxc:NavigationView x:Name="NavView" IsSettingsVisible="False" IsBackButtonVisible="Visible" PaneClosed="NavigationView_PaneClosed" PaneOpening="NavigationView_PaneOpening">
         <muxc:NavigationView.PaneTitle>
@@ -16,7 +17,7 @@
             <muxc:NavigationViewItem x:Name="Home" Icon="Home" Content="Home" Tapped="Home_Tapped"/>
             <muxc:NavigationViewItem x:Name="Stories" Icon="Library" Content="My Programming Stories" Tapped="Stories_Tapped">
                 <muxc:NavigationViewItem.MenuItems>
-                    <muxc:NavigationViewItem x:Name="EarlyLife" Content="Early life"/>
+                    <muxc:NavigationViewItem x:Name="Stories_EarlyLife" Content="Early life" Tapped="Stories_EarlyLife_Tapped"/>
                     <muxc:NavigationViewItem x:Name="CompetitiveProgramming" Content="Competitive Programming Journey"/>
                     <muxc:NavigationViewItem x:Name="OpenSource" Content="Open Source Developer"/>
                     <muxc:NavigationViewItem x:Name="Robotics" Content="Out Of The Box"/>
