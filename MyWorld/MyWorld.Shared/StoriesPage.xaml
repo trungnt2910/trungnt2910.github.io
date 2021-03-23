@@ -1,0 +1,16 @@
+﻿<Page
+    x:Class="MyWorld.StoriesPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MyWorld"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <ScrollViewer>
+        <StackPanel>
+            <TextBlock Style="{StaticResource HeaderTextBlockStyle}" Text="My Programming Stories"/>
+            <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="How my interest in computing began, and what it takes build my present self."/>
+        </StackPanel>
+    </ScrollViewer>
+</Page>

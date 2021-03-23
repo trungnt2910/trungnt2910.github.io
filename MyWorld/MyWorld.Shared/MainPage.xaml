@@ -5,14 +5,70 @@
     xmlns:local="using:MyWorld"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     mc:Ignorable="d">
 
-    <NavigationView IsSettingsVisible="False" IsBackButtonVisible="Visible">
-        <NavigationView.MenuItems>
-            <NavigationViewItem x:Name="Home" Icon="Home" Content="Home"/>
-            <NavigationViewItem x:Name="Stories" Icon="Library" Content="My Programming Stories"/>
-            <NavigationViewItem x:Name="Activities" Icon="OutlineStar" Content="My Activities"/>
-            <NavigationViewItem x:Name="Tools" Icon="Setting" Content="My Tools"/>
-        </NavigationView.MenuItems>
-    </NavigationView>
+    <muxc:NavigationView x:Name="NavView" IsSettingsVisible="False" IsBackButtonVisible="Visible" PaneClosed="NavigationView_PaneClosed" PaneOpening="NavigationView_PaneOpening">
+        <muxc:NavigationView.PaneTitle>
+            trungnt2910's World
+        </muxc:NavigationView.PaneTitle>
+        <muxc:NavigationView.MenuItems>
+            <muxc:NavigationViewItem x:Name="Home" Icon="Home" Content="Home" Tapped="Home_Tapped"/>
+            <muxc:NavigationViewItem x:Name="Stories" Icon="Library" Content="My Programming Stories" Tapped="Stories_Tapped">
+                <muxc:NavigationViewItem.MenuItems>
+                    <muxc:NavigationViewItem x:Name="EarlyLife" Content="Early life"/>
+                    <muxc:NavigationViewItem x:Name="CompetitiveProgramming" Content="Competitive Programming Journey"/>
+                    <muxc:NavigationViewItem x:Name="OpenSource" Content="Open Source Developer"/>
+                    <muxc:NavigationViewItem x:Name="Robotics" Content="Out Of The Box"/>
+                    <muxc:NavigationViewItem x:Name="TimetableApp" Content="From Console to Cross-Platform UI"/>
+                </muxc:NavigationViewItem.MenuItems>
+            </muxc:NavigationViewItem>
+            <muxc:NavigationViewItem x:Name="Activities" Icon="OutlineStar" Content="My Activities" Tapped="Activities_Tapped">
+                <muxc:NavigationViewItem.MenuItems>
+                    <muxc:NavigationViewItem x:Name="GART" Content="GreenAms Robotics Team"/>
+                    <muxc:NavigationViewItem x:Name="GCI" Content="Google Code-in"/>
+                </muxc:NavigationViewItem.MenuItems>
+            </muxc:NavigationViewItem>
+            <muxc:NavigationViewItem x:Name="Tools" Icon="Setting" Content="My Tools" Tapped="Tools_Tapped">
+                <muxc:NavigationViewItem.MenuItems>
+                    <muxc:NavigationViewItem x:Name="CodeHashifier" Content="CodeHashifier - C++ obfuscator"/>
+                    <muxc:NavigationViewItem x:Name="YoutubeDownloader" Content="Youtube Video Downloader"/>
+                    <muxc:NavigationViewItem x:Name="Nim" Content="I dare you to a game of Nim!"/>
+                </muxc:NavigationViewItem.MenuItems>
+            </muxc:NavigationViewItem>
+        </muxc:NavigationView.MenuItems>
+        <muxc:NavigationView.PaneFooter>
+            <StackPanel x:Name="InfoFooter">
+                <TextBlock Text="Find me online"/>
+                <Grid Name="Social" ColumnSpacing="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="32"/>
+                        <ColumnDefinition Width="32"/>
+                        <ColumnDefinition Width="32"/>
+                        <ColumnDefinition Width="32"/>
+                    </Grid.ColumnDefinitions>
+                    <HyperlinkButton NavigateUri="https://github.com/trungnt2910" Grid.Row="0" Grid.Column="0">
+                        <Image Source="Assets/github.png" Width="32" Height="32"/>
+                    </HyperlinkButton>
+                    <HyperlinkButton NavigateUri="https://stackoverflow.com/users/14009285/trungnt2910" Grid.Row="0" Grid.Column="1">
+                        <Image Source="Assets/stackoverflow.png" Width="32" Height="32"/>
+                    </HyperlinkButton>
+                    <HyperlinkButton NavigateUri="https://facebook.com/ntt.2910" Grid.Row="0" Grid.Column="2">
+                        <Image Source="Assets/facebook.png" Width="32" Height="32"/>
+                    </HyperlinkButton>
+                    <HyperlinkButton Grid.Row="0" Grid.Column="3">
+                        <Image Source="Assets/linkedin.png" Width="32" Height="32"/>
+                    </HyperlinkButton>
+                </Grid>
+                <TextBlock Text="(C) 2021 Trung Nguyen"/>
+                <TextBlock Text="Created on the Uno platform"/>
+                <TextBlock Text="Uses icons from freeicons.io"/>
+            </StackPanel>
+        </muxc:NavigationView.PaneFooter>
+        <Frame x:Name="ContentFrame">
+        </Frame>
+    </muxc:NavigationView>
 </Page>

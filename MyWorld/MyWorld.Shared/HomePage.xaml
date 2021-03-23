@@ -1,0 +1,35 @@
+﻿<Page
+    x:Class="MyWorld.HomePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MyWorld"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <ScrollViewer VerticalScrollMode="Auto">
+        <StackPanel>
+            <TextBlock Style="{StaticResource HeaderTextBlockStyle}" Text="Hello World!"/>
+            <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="I am Trung Nguyen, a high school student, and a passionate developer."/>
+            <TextBlock Text=""/>
+            <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="Basic Info"/>
+            <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text="Name: Nguyễn Thành Trung"/>
+            <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text="Nationality: Vietnam"/>
+            <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text="Education:"/>
+            <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text=" - Studied at Hoang Hoa Tham Primary School"/>
+            <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text=" - Studied at Phan Chu Trinh Secondary School"/>
+            <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text=" - Currently a 11th grade student at Hanoi - Amsterdam High school for the Gifted"/>
+            <TextBlock Text=""/>
+            <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="Skills"/>
+            <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text=" - .NET development using C# and XAML, in various fields: Library, Console, Desktop, Mobile, and Web."/>
+            <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text=" - C++ library and application development."/>
+            <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text=" - Basic understanding of computer algorithms."/>
+            <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text=" - Teaching and teamwork, after my experiences in GreenAms Robotics Team."/>
+            <TextBlock Text=""/>
+            <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="Interests"/>
+            <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text="Having the ability to code, I am committed to create solutions for the community, as well as contributing to various open source projects, such as the Haiku operating system, and the Mono project."/>
+            <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text="Outside of computing, I enjoy doing research on science, as well as reading about American politics."/>
+            <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text="I also enjoy playing Minecraft to satisfy my desire for an endless adventure, as well as playing Arena of Valor, a game that honors skills, strategy, and team spirit."/>
+        </StackPanel>
+    </ScrollViewer>
+</Page>

@@ -25,6 +25,37 @@ namespace MyWorld
         public MainPage()
         {
             this.InitializeComponent();
+            ContentFrame.Navigate(typeof(HomePage));
+        }
+
+        private void Home_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            ContentFrame.Navigate(typeof(HomePage));
+        }
+
+        private void Stories_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            ContentFrame.Navigate(typeof(StoriesPage));
+        }
+
+        private void Activities_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
+
+        private void Tools_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
+
+        private void NavigationView_PaneClosed(Microsoft.UI.Xaml.Controls.NavigationView sender, object args)
+        {
+            InfoFooter.Visibility = Visibility.Collapsed;
+        }
+
+        private void NavigationView_PaneOpening(Microsoft.UI.Xaml.Controls.NavigationView sender, object args)
+        {
+            InfoFooter.Visibility = Visibility.Visible;
         }
     }
 }
