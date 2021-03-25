@@ -11,7 +11,7 @@
     <ScrollViewer>
         <StackPanel>
             <TextBlock Style="{StaticResource HeaderTextBlockStyle}" Text="CodeHashifier - C++ code obfuscator"/>
-            <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="Ever found some guy nagging you to send the code for a problem he had never gave a second of thought? Or some bloke too lazy to finish the console application for his weekend assignment? This tool is for you."/>
+            <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="Ever found some guy nagging you to send the code for a problem he never gave a second of thought? Or some bloke too lazy to finish the console application for his weekend assignment? This tool is for you."/>
             <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text=""/>
             <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text="CodeHashifier mangles your C++ code by using random #define hashes, concealing its idea from the readers while still maintaining its validity to compilers."/>
             <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text=""/>
@@ -73,11 +73,11 @@
                         Click="CopyToClipboardButton_Click"/>
             </Grid>
             <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text=""/>
-            <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="History"/>
+            <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="A brief history"/>
             <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text="CodeHashifier started as a console script written in C++ in 2020, for my personal use. Then, as the tool's popularity rose among my classmates, I decided to make it more user friendly. Having recently learnt C# and Windows Forms, I created a simple GUI for the tool:"/>
-            <Image Source="ms-appx:///Assets/Tools/CodeHashifier/OriginalScreenshot.png"/>
-            <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text="The original script became a .dll (and also my first one), accessible to the new UI through P/Invoke. This allows the obfuscator engine to be easily updated and substituted."/>
-            <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text="CodeHashifier Online has an identical appearance and functionality, however, to allow the app to be contained in a website, all code had to be managed C# code."/>
+            <Image Source="ms-appx:///Assets/Tools/CodeHashifier/OriginalScreenshot.png" Stretch="None"/>
+            <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text="The original script became a .dll (and also my first one), accessible to the new UI through P/Invoke, allowing the obfuscator engine to be easily updated and substituted."/>
+            <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text="CodeHashifier Online has an identical appearance and functionality, however, to allow the app to be contained in a website, all code had to be managed (C#) code."/>
             <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text="The old CodeHashifier source is avaiable on my Github repo, under the MIT license."/>
         </StackPanel>
     </ScrollViewer>
