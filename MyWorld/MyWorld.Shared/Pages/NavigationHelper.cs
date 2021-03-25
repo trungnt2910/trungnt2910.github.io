@@ -10,7 +10,8 @@ namespace MyWorld.Pages
         {
             { "Home", typeof(HomePage) },
             { "Stories", typeof(StoriesPage) },
-            { "Stories/EarlyLife", typeof(Stories.EarlyLife) }
+            { "Stories/EarlyLife", typeof(Stories.EarlyLife) },
+            { "Tools/CodeHashifier", typeof(Tools.CodeHashifier) }
         };
 
         public static bool NavigateToLocation(this Windows.UI.Xaml.Controls.Frame frame, string location)
