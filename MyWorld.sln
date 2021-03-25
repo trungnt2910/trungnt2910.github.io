@@ -13,17 +13,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyWorld.iOS", "MyWorld\MyWo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyWorld.UWP", "MyWorld\MyWorld.UWP\MyWorld.UWP.csproj", "{DCEBB8C2-E4BD-44F8-ACCB-9A8980D8F01D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyWorld.Wasm", "MyWorld\MyWorld.Wasm\MyWorld.Wasm.csproj", "{1173AA60-9009-48B1-BBA8-3EF094643D84}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyWorld.Wasm", "MyWorld\MyWorld.Wasm\MyWorld.Wasm.csproj", "{1173AA60-9009-48B1-BBA8-3EF094643D84}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyWorld.macOS", "MyWorld\MyWorld.macOS\MyWorld.macOS.csproj", "{FBC1246F-85C6-42EC-806C-025D4186D212}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyWorld.Skia.Wpf.Host", "MyWorld\MyWorld.Skia.Wpf.Host\MyWorld.Skia.Wpf.Host.csproj", "{3FB22EA8-851C-41E6-A96A-0703A9270E95}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyWorld.Skia.Wpf.Host", "MyWorld\MyWorld.Skia.Wpf.Host\MyWorld.Skia.Wpf.Host.csproj", "{3FB22EA8-851C-41E6-A96A-0703A9270E95}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyWorld.Skia.Wpf", "MyWorld\MyWorld.Skia.Wpf\MyWorld.Skia.Wpf.csproj", "{80B6FA6B-88C4-4E3A-9534-DC64140D57CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyWorld.Skia.Wpf", "MyWorld\MyWorld.Skia.Wpf\MyWorld.Skia.Wpf.csproj", "{80B6FA6B-88C4-4E3A-9534-DC64140D57CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyWorld.Skia.Gtk", "MyWorld\MyWorld.Skia.Gtk\MyWorld.Skia.Gtk.csproj", "{2C5B6AC0-965B-4D20-9A6B-416D14921121}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyWorld.Skia.Gtk", "MyWorld\MyWorld.Skia.Gtk\MyWorld.Skia.Gtk.csproj", "{2C5B6AC0-965B-4D20-9A6B-416D14921121}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyWorld.Skia.Tizen", "MyWorld\MyWorld.Skia.Tizen\MyWorld.Skia.Tizen.csproj", "{F50BBBCB-F27F-47F3-8274-3786CF50900F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyWorld.Skia.Tizen", "MyWorld\MyWorld.Skia.Tizen\MyWorld.Skia.Tizen.csproj", "{F50BBBCB-F27F-47F3-8274-3786CF50900F}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution

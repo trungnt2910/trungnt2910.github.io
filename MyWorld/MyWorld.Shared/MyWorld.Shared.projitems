@@ -31,9 +31,24 @@
     <Compile Include="$(MSBuildThisFileDirectory)Pages\StoriesPage.xaml.cs">
       <DependentUpon>StoriesPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\Stories\CompetitiveProgramming.xaml.cs">
+      <DependentUpon>CompetitiveProgramming.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Pages\Stories\EarlyLife.xaml.cs">
       <DependentUpon>EarlyLife.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\ToolsPage.xaml.cs">
+      <DependentUpon>ToolsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\Tools\CodeHashifier.xaml.cs">
+      <DependentUpon>CodeHashifier.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\Tools\CodeHashifierImpl\AboutDialog.xaml.cs">
+      <DependentUpon>AboutDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\Tools\CodeHashifierImpl\CodeHashifierEngine.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\Tools\CodeHashifierImpl\RandomExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\Tools\CodeHashifierImpl\WordReader.cs" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="$(MSBuildThisFileDirectory)MainPage.xaml">
@@ -52,7 +67,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Pages\Stories\CompetitiveProgramming.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Pages\Stories\EarlyLife.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Pages\ToolsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Pages\Tools\CodeHashifier.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Pages\Tools\CodeHashifierImpl\AboutDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -68,5 +99,7 @@
     <Content Include="$(MSBuildThisFileDirectory)Assets\github.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\linkedin.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\stackoverflow.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Tools\CodeHashifier\CodeHashifier.ico" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Tools\CodeHashifier\OriginalScreenshot.png" />
   </ItemGroup>
 </Project>

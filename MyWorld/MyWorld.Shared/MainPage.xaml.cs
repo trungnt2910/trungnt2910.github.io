@@ -28,6 +28,17 @@ namespace MyWorld
             ContentFrame.Navigate(typeof(Pages.HomePage));
         }
 
+        private void NavigationView_PaneClosed(Microsoft.UI.Xaml.Controls.NavigationView sender, object args)
+        {
+            InfoFooter.Visibility = Visibility.Collapsed;
+        }
+
+        private void NavigationView_PaneOpening(Microsoft.UI.Xaml.Controls.NavigationView sender, object args)
+        {
+            InfoFooter.Visibility = Visibility.Visible;
+        }
+
+        #region MainPage
         private void Home_Tapped(object sender, TappedRoutedEventArgs e)
         {
             ContentFrame.Navigate(typeof(Pages.HomePage));
@@ -45,22 +56,27 @@ namespace MyWorld
 
         private void Tools_Tapped(object sender, TappedRoutedEventArgs e)
         {
-
+            ContentFrame.Navigate(typeof(Pages.ToolsPage));
         }
+        #endregion
 
-        private void NavigationView_PaneClosed(Microsoft.UI.Xaml.Controls.NavigationView sender, object args)
-        {
-            InfoFooter.Visibility = Visibility.Collapsed;
-        }
-
-        private void NavigationView_PaneOpening(Microsoft.UI.Xaml.Controls.NavigationView sender, object args)
-        {
-            InfoFooter.Visibility = Visibility.Visible;
-        }
-
+        #region Stories
         private void Stories_EarlyLife_Tapped(object sender, TappedRoutedEventArgs e)
         {
             ContentFrame.Navigate(typeof(Pages.Stories.EarlyLife));
         }
+
+        private void Stories_CompetitiveProgramming_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            ContentFrame.Navigate(typeof(Pages.Stories.CompetitiveProgramming));
+        }
+        #endregion
+
+        #region Tools
+        private void Tools_CodeHashifier_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            ContentFrame.Navigate(typeof(Pages.Tools.CodeHashifier));
+        }
+        #endregion
     }
 }

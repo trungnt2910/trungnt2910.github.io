@@ -24,7 +24,7 @@
             <muxc:NavigationViewItem x:Name="Stories" Icon="Library" Content="My Programming Stories" Tapped="Stories_Tapped">
                 <muxc:NavigationViewItem.MenuItems>
                     <muxc:NavigationViewItem x:Name="Stories_EarlyLife" Content="Early life" Tapped="Stories_EarlyLife_Tapped"/>
-                    <muxc:NavigationViewItem x:Name="CompetitiveProgramming" Content="Competitive Programming Journey"/>
+                    <muxc:NavigationViewItem x:Name="Stories_CompetitiveProgramming" Content="Competitive Programming Journey" Tapped="Stories_CompetitiveProgramming_Tapped"/>
                     <muxc:NavigationViewItem x:Name="OpenSource" Content="Open Source Developer"/>
                     <muxc:NavigationViewItem x:Name="Robotics" Content="Out Of The Box"/>
                     <muxc:NavigationViewItem x:Name="TimetableApp" Content="From Console to Cross-Platform UI"/>
@@ -38,7 +38,7 @@
             </muxc:NavigationViewItem>
             <muxc:NavigationViewItem x:Name="Tools" Icon="Setting" Content="My Tools" Tapped="Tools_Tapped">
                 <muxc:NavigationViewItem.MenuItems>
-                    <muxc:NavigationViewItem x:Name="CodeHashifier" Content="CodeHashifier - C++ obfuscator"/>
+                    <muxc:NavigationViewItem x:Name="Tools_CodeHashifier" Content="CodeHashifier - C++ obfuscator" Tapped="Tools_CodeHashifier_Tapped"/>
                     <muxc:NavigationViewItem x:Name="YoutubeDownloader" Content="Youtube Video Downloader"/>
                     <muxc:NavigationViewItem x:Name="Nim" Content="I dare you to a game of Nim!"/>
                 </muxc:NavigationViewItem.MenuItems>

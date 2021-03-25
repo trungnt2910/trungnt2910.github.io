@@ -1,0 +1,17 @@
+﻿<Page
+    x:Class="MyWorld.Pages.ToolsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MyWorld.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <ScrollViewer>
+        <StackPanel>
+            <TextBlock Style="{StaticResource HeaderTextBlockStyle}" Text="My tools"/>
+            <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="Here you can try my little projects, from the convenience of your web browser."/>
+        </StackPanel>
+    </ScrollViewer>
+</Page>
