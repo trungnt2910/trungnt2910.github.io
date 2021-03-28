@@ -18,6 +18,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)BindableBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -49,6 +50,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)Pages\Tools\CodeHashifierImpl\CodeHashifierEngine.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\Tools\CodeHashifierImpl\RandomExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\Tools\CodeHashifierImpl\WordReader.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\Tools\YoutubeDownloader.xaml.cs">
+      <DependentUpon>YoutubeDownloader.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\Tools\YoutubeDownloaderImpl\YoutubeDownloaderViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PlatformSpecific\Http.cs" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="$(MSBuildThisFileDirectory)MainPage.xaml">
@@ -84,6 +90,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Pages\Tools\CodeHashifierImpl\AboutDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Pages\Tools\YoutubeDownloader.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -77,6 +77,11 @@ namespace MyWorld
         {
             ContentFrame.Navigate(typeof(Pages.Tools.CodeHashifier));
         }
+
+        private void YoutubeDownloader_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            ContentFrame.Navigate(typeof(Pages.Tools.YoutubeDownloader));
+        }
         #endregion
     }
 }

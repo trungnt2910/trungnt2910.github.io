@@ -11,7 +11,8 @@ namespace MyWorld.Pages
             { "Home", typeof(HomePage) },
             { "Stories", typeof(StoriesPage) },
             { "Stories/EarlyLife", typeof(Stories.EarlyLife) },
-            { "Tools/CodeHashifier", typeof(Tools.CodeHashifier) }
+            { "Tools/CodeHashifier", typeof(Tools.CodeHashifier) },
+            { "Tools/YoutubeDownloader", typeof(Tools.YoutubeDownloader) }
         };
 
         public static bool NavigateToLocation(this Windows.UI.Xaml.Controls.Frame frame, string location)

@@ -39,7 +39,7 @@
             <muxc:NavigationViewItem x:Name="Tools" Icon="Setting" Content="My Tools" Tapped="Tools_Tapped">
                 <muxc:NavigationViewItem.MenuItems>
                     <muxc:NavigationViewItem x:Name="Tools_CodeHashifier" Content="CodeHashifier - C++ obfuscator" Tapped="Tools_CodeHashifier_Tapped"/>
-                    <muxc:NavigationViewItem x:Name="YoutubeDownloader" Content="Youtube Video Downloader"/>
+                    <muxc:NavigationViewItem x:Name="YoutubeDownloader" Content="Youtube Video Downloader" Tapped="YoutubeDownloader_Tapped"/>
                     <muxc:NavigationViewItem x:Name="Nim" Content="I dare you to a game of Nim!"/>
                 </muxc:NavigationViewItem.MenuItems>
             </muxc:NavigationViewItem>
