@@ -27,6 +27,23 @@ namespace MyWorld.Wasm
             }
             var requestMessage = new HttpRequestMessage(request.Method, $"https://cors.bridged.cc/{request.RequestUri}");
 
+            // Forwards headers.
+            foreach (var kvp in request.Headers)
+            {
+                requestMessage.Headers.Add(kvp.Key, kvp.Value);
+            }
+
+            // Enforce PC user agent. This should not affect our cross-platform web app.
+            if (requestMessage.Headers.Contains("User-Agent"))
+            {
+                requestMessage.Headers.Remove("User-Agent");
+            }
+
+            // This agent is known to have worked.
+            // Howver, setting the agent is currently impossible in Chrome and Edge because of a bug in Chromium.
+            // https://bugs.chromium.org/p/chromium/issues/detail?id=571722
+            requestMessage.Headers.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36 Edg/89.0.774.63");
+
             Console.WriteLine(request.RequestUri);
             Console.WriteLine(requestMessage.RequestUri);
 

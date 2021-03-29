@@ -11,7 +11,8 @@ namespace MyWorld.Wasm
         static int Main(string[] args)
         {
             PlatformSpecific.Http.DefaultClient = new HttpClient(new CorsBypassHandler());
-            PlatformSpecific.Http.FetchRange = JavascriptFetcher.FetchProxy;
+            //PlatformSpecific.Http.Fetch = JavascriptFetcher.FetchProxy;
+            //PlatformSpecific.Http.FetchRange = JavascriptFetcher.FetchProxy;
 
             Windows.UI.Xaml.Application.Start(_ => _app = new App());
 

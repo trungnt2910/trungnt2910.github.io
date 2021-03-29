@@ -40,9 +40,11 @@ namespace MyWorld.Wasm
             return HexStringToByte(result);
         }
 
+        [Obsolete("Fixed already, suckers!")]
         // This thing is only needed as Mono doesn't seem to handle range queries properly.
         public static async Task<byte[]> FetchProxy(string url, long from, long to)
         {
+            Console.WriteLine("No, don't go here!");
             var result = await WebAssemblyRuntime.InvokeAsync($@"
             {{
                     const buf2hex = (buffer) => 

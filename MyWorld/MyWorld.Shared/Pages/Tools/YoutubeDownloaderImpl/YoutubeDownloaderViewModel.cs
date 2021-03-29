@@ -119,6 +119,13 @@ namespace MyWorld.Pages.Tools.YoutubeDownloaderImpl
             set => SetProperty(ref progressBarValue, value);
         }
 
+        private bool isSelectorEnabled = true;
+        public bool IsSelectorEnabled
+        {
+            get => isSelectorEnabled;
+            set => SetProperty(ref isSelectorEnabled, value);
+        }
+
         public Visibility Negate(Visibility visibility) => (visibility == Visibility.Collapsed) ? Visibility.Visible : Visibility.Collapsed;
 
         private ObservableCollection<object> qualities = new ObservableCollection<object>() { "Placeholder1", "Placeholder2" };
@@ -166,6 +173,7 @@ namespace MyWorld.Pages.Tools.YoutubeDownloaderImpl
 
         public async Task DownloadVideoAsync(IVideoStreamInfo videoStreamInfo, EventHandler callback = null)
         {
+            IsSelectorEnabled = false;
             if (videoStreamInfo is MuxedStreamInfo)
             {
                 System.Diagnostics.Debug.WriteLine(videoStreamInfo.Url);
@@ -192,9 +200,10 @@ namespace MyWorld.Pages.Tools.YoutubeDownloaderImpl
 
                     while (Downloaded < VideoSize)
                     {
-                        byte[] buffer = await PlatformSpecific.Http.FetchRange(url, downloaded, Math.Min(VideoSize, Downloaded + bufferSize) - 1);
+                        byte[] buffer = await PlatformSpecific.Http.FetchRange(url, Downloaded, Math.Min(VideoSize, Downloaded + bufferSize) - 1);
                         fileStream.Write(buffer, 0, buffer.Length);
-                        downloaded = Math.Min(VideoSize, Downloaded + bufferSize);
+                        Downloaded += buffer.Length;
+
                         DownloadStatus = ($"Downloaded: {Downloaded}/{VideoSize}");
                         callback?.Invoke(null, null);
                     }
@@ -222,6 +231,7 @@ namespace MyWorld.Pages.Tools.YoutubeDownloaderImpl
 
 
             }
+            IsSelectorEnabled = true;
         }
     }
 }

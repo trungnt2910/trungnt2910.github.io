@@ -17,6 +17,7 @@
                             QueryIcon="Download" 
                             PlaceholderText="Enter your Youtube URL here..." 
                             Margin="10,0,10,0"
+                            IsEnabled="{x:Bind ViewModel.IsSelectorEnabled, Mode=OneWay}"
                             QuerySubmitted="UrlTextBox_QuerySubmitted"/>
             <Grid>
                 <StackPanel x:Name="VideoInfoView" 
@@ -45,9 +46,15 @@
                     </TextBlock>
                     <Grid>
                         <TextBlock Text="Fetching video qualities..." Grid.Row="0" Grid.Column="0" Visibility="{x:Bind ViewModel.Negate(ViewModel.QualitiesSelectorVisibility), Mode=OneWay}"/>
-                        <ComboBox x:Name="QualitySelector" PlaceholderText="Quality" HorizontalAlignment="Stretch" ItemsSource="{x:Bind ViewModel.Qualities, Mode=OneWay}" Visibility="{x:Bind ViewModel.QualitiesSelectorVisibility, Mode=OneWay}" Grid.Row="0" Grid.Column="0"/>
+                        <ComboBox x:Name="QualitySelector" 
+                                  PlaceholderText="Quality" 
+                                  HorizontalAlignment="Stretch" 
+                                  ItemsSource="{x:Bind ViewModel.Qualities, Mode=OneWay}" 
+                                  Visibility="{x:Bind ViewModel.QualitiesSelectorVisibility, Mode=OneWay}"
+                                  IsEnabled="{x:Bind ViewModel.IsSelectorEnabled, Mode=OneWay}"
+                                  Grid.Row="0" Grid.Column="0"/>
                     </Grid>
-                    <Button x:Name="DownloadButton" Content="Download!" HorizontalAlignment="Right"  Click="DownloadButton_Click"/>
+                    <Button x:Name="DownloadButton" Content="Download!" HorizontalAlignment="Right"  Click="DownloadButton_Click" IsEnabled="{x:Bind ViewModel.IsSelectorEnabled, Mode=OneWay}"/>
                     <StackPanel x:Name="DownloadInfo" Visibility="{x:Bind ViewModel.DownloadInfoVisibility, Mode=OneWay}">
                         <TextBlock x:Name="Status" Text="{x:Bind ViewModel.DownloadStatus, Mode=OneWay}"/>
                         <muxc:ProgressBar x:Name="DownloadProgressBar"/>
