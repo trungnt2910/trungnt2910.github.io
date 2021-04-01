@@ -16,8 +16,6 @@ async function Init() {
         const { createFFmpeg, fetchFile } = FFmpeg;
         interopLog('Creating FFmpeg');
         ffmpeg = createFFmpeg({
-            // AV1 support: https://github.com/ffmpegwasm/ffmpeg.wasm/issues/61
-            corePath: 'https://unpkg.com/@ffmpeg/core@0.9.0-alpha.2/dist/ffmpeg-core.js',
             log: false,
             logger: ({ message }) => libraryLog(message.toString()),
             progress: ({ ratio }) => progressLog(ratio.toString())

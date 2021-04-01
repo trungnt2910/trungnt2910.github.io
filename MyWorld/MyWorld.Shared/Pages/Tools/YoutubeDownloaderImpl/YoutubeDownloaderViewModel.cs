@@ -166,6 +166,8 @@ namespace MyWorld.Pages.Tools.YoutubeDownloaderImpl
 
             foreach (var item in videoList)
             {
+                // HACK: Many video players don't support the av01 codec, so we reject them.
+                if (item.VideoCodec.Contains("av01")) continue;
                 Qualities.Add(item);
             }
 
@@ -219,7 +221,7 @@ namespace MyWorld.Pages.Tools.YoutubeDownloaderImpl
             }
             else
             {
-                AudioOnlyStreamInfo audioInfo = (AudioOnlyStreamInfo)currentManifest.GetAudioOnly().WithHighestBitrate();
+                AudioOnlyStreamInfo audioStreamInfo = (AudioOnlyStreamInfo)currentManifest.GetAudioOnly().Where((info) => info.Container == videoStreamInfo.Container).WithHighestBitrate();
 
                 if (!FFmpeg.IsLoaded())
                 {
@@ -230,7 +232,7 @@ namespace MyWorld.Pages.Tools.YoutubeDownloaderImpl
 
                 DownloadStatus = "Creating temporary files...";
 
-                var audio = $"{currentVideo.Id.Value}_audio.{audioInfo.Container}";
+                var audio = $"{currentVideo.Id.Value}_audio.{audioStreamInfo.Container}";
                 var video = $"{currentVideo.Id.Value}_video.{videoStreamInfo.Container}";
                 var output = $"{currentVideo.Id.Value}.{videoStreamInfo.Container}";
 
@@ -239,7 +241,7 @@ namespace MyWorld.Pages.Tools.YoutubeDownloaderImpl
                 var audioStream = FFmpeg.GetInputFileStream(audio);
                 var videoStream = FFmpeg.GetInputFileStream(video);
 
-                VideoSize = audioInfo.Size.TotalBytes + videoStreamInfo.Size.TotalBytes;
+                VideoSize = audioStreamInfo.Size.TotalBytes + videoStreamInfo.Size.TotalBytes;
                 Downloaded = 0;
 
                 Action<long> incrementDownloaded = (long increment) =>
@@ -249,7 +251,7 @@ namespace MyWorld.Pages.Tools.YoutubeDownloaderImpl
                     callback?.Invoke(null, null);
                 };
 
-                var audioTask = DownloadFileAsync(audioInfo.Url, audioInfo.Size.TotalBytes, audioStream, incrementDownloaded);
+                var audioTask = DownloadFileAsync(audioStreamInfo.Url, audioStreamInfo.Size.TotalBytes, audioStream, incrementDownloaded);
                 var videoTask = DownloadFileAsync(videoStreamInfo.Url, videoStreamInfo.Size.TotalBytes, videoStream, incrementDownloaded);
 
                 await Task.Factory.ContinueWhenAll(new Task[] { audioTask, videoTask }, (tasks) => { });
