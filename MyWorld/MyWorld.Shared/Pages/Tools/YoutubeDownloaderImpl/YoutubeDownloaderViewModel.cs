@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyWorld.PlatformSpecific;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -174,6 +175,7 @@ namespace MyWorld.Pages.Tools.YoutubeDownloaderImpl
         public async Task DownloadVideoAsync(IVideoStreamInfo videoStreamInfo, EventHandler callback = null)
         {
             IsSelectorEnabled = false;
+            DownloadInfoVisibility = Visibility.Visible;
             if (videoStreamInfo is MuxedStreamInfo)
             {
                 System.Diagnostics.Debug.WriteLine(videoStreamInfo.Url);
@@ -192,12 +194,11 @@ namespace MyWorld.Pages.Tools.YoutubeDownloaderImpl
                     Downloaded = 0;
                     VideoSize = videoStreamInfo.Size.TotalBytes;
 
-                    DownloadInfoVisibility = Visibility.Visible;
-
                     const int bufferSize = 128 << 10;
 
                     var url = videoStreamInfo.Url;
 
+                    // TO-DO: CLEANUP HERE.
                     while (Downloaded < VideoSize)
                     {
                         byte[] buffer = await PlatformSpecific.Http.FetchRange(url, Downloaded, Math.Min(VideoSize, Downloaded + bufferSize) - 1);
@@ -218,20 +219,112 @@ namespace MyWorld.Pages.Tools.YoutubeDownloaderImpl
             }
             else
             {
-                var audio = Path.GetTempFileName();
-                var video = Path.GetTempFileName();
-
                 AudioOnlyStreamInfo audioInfo = (AudioOnlyStreamInfo)currentManifest.GetAudioOnly().WithHighestBitrate();
 
-                var audioTask = client.Videos.Streams.DownloadAsync(audioInfo, audio);
-                var videoTask = client.Videos.Streams.DownloadAsync(videoStreamInfo, video);
+                if (!FFmpeg.IsLoaded())
+                {
+                    DownloadStatus = "Loading FFmpeg...";
+                    await FFmpeg.InitAsync();
+                    DownloadStatus = "FFmpeg loaded";
+                }
 
-                await audioTask;
-                await videoTask;
+                DownloadStatus = "Creating temporary files...";
 
+                var audio = $"{currentVideo.Id.Value}_audio.{audioInfo.Container}";
+                var video = $"{currentVideo.Id.Value}_video.{videoStreamInfo.Container}";
+                var output = $"{currentVideo.Id.Value}.{videoStreamInfo.Container}";
 
+                Console.WriteLine($"Temp files: {audio} {video}");
+
+                var audioStream = FFmpeg.GetInputFileStream(audio);
+                var videoStream = FFmpeg.GetInputFileStream(video);
+
+                VideoSize = audioInfo.Size.TotalBytes + videoStreamInfo.Size.TotalBytes;
+                Downloaded = 0;
+
+                Action<long> incrementDownloaded = (long increment) =>
+                {
+                    Downloaded += increment;
+                    DownloadStatus = ($"Downloaded: {Downloaded}/{VideoSize}");
+                    callback?.Invoke(null, null);
+                };
+
+                var audioTask = DownloadFileAsync(audioInfo.Url, audioInfo.Size.TotalBytes, audioStream, incrementDownloaded);
+                var videoTask = DownloadFileAsync(videoStreamInfo.Url, videoStreamInfo.Size.TotalBytes, videoStream, incrementDownloaded);
+
+                await Task.Factory.ContinueWhenAll(new Task[] { audioTask, videoTask }, (tasks) => { });
+
+                audioStream.Flush(); audioStream.Dispose();
+                videoStream.Flush(); videoStream.Dispose();
+
+                DownloadStatus = "Merging audio and video...";
+
+                EventHandler<ProgressChangedEventArgs> progressChangedHandler = (sender, args) =>
+                {
+                    ProgressBarValue = args.ProgressPercentage;
+                    DownloadStatus = $"Merging audio and video: {args.ProgressPercentage}%.";
+                    callback?.Invoke(null, null);
+                };
+
+                FFmpeg.ProgressChanged += progressChangedHandler;
+
+                var outputStream = await FFmpeg.MergeToFileAsync(audio, video, output);
+
+                FFmpeg.ProgressChanged -= progressChangedHandler;
+
+                DownloadStatus = "Merging done.";
+
+                DownloadStatus = "Saving file...";
+
+                var savePicker = new Windows.Storage.Pickers.FileSavePicker();
+                savePicker.FileTypeChoices.Add("Video", new List<string>() { $".{videoStreamInfo.Container}" });
+                savePicker.SuggestedFileName = currentVideo.Title;
+                Windows.Storage.StorageFile file = await savePicker.PickSaveFileAsync();
+                if (file != null)
+                {
+                    Windows.Storage.CachedFileManager.DeferUpdates(file);
+
+                    var fileStream = await file.OpenStreamForWriteAsync();
+
+                    const int bufferSize = 128 << 10;
+                    var buffer = new byte[bufferSize];
+
+                    long totalSize = outputStream.Length;
+                    long copied = 0;
+
+                    ProgressBarValue = 0;
+                    callback?.Invoke(null, null);
+
+                    while (copied < totalSize)
+                    {
+                        int read = outputStream.Read(buffer, 0, bufferSize);
+                        fileStream.Write(buffer, 0, read);
+                        copied += read;
+                        ProgressBarValue = (double)((decimal)copied / totalSize * 100);
+                        callback?.Invoke(null, null);
+                    }
+
+                    fileStream.Dispose();
+                    DownloadStatus = "Download completed.";
+
+                    Windows.Storage.Provider.FileUpdateStatus status =
+                        await Windows.Storage.CachedFileManager.CompleteUpdatesAsync(file);
+                }
             }
             IsSelectorEnabled = true;
+        }
+
+        private async Task DownloadFileAsync(string url, long fileSize, Stream fileStream, Action<long> callback = null)
+        {
+            const int bufferSize = 128 << 10;
+            long downloadProgress = 0;
+            while (downloadProgress < fileSize)
+            {
+                byte[] buffer = await Http.FetchRange(url, downloadProgress, Math.Min(VideoSize, downloadProgress + bufferSize) - 1);
+                fileStream.Write(buffer, 0, buffer.Length);
+                downloadProgress += buffer.Length;
+                callback?.Invoke(buffer.Length);
+            }
         }
     }
 }

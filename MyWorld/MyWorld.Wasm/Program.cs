@@ -11,8 +11,15 @@ namespace MyWorld.Wasm
         static int Main(string[] args)
         {
             PlatformSpecific.Http.DefaultClient = new HttpClient(new CorsBypassHandler());
-            //PlatformSpecific.Http.Fetch = JavascriptFetcher.FetchProxy;
-            //PlatformSpecific.Http.FetchRange = JavascriptFetcher.FetchProxy;
+
+            PlatformSpecific.FFmpeg.InitAsync = FFmpeg.InitAsync;
+            PlatformSpecific.FFmpeg.MergeToFileAsync = FFmpeg.MergeToFileAsync;
+            PlatformSpecific.FFmpeg.IsLoaded = () => FFmpeg.Loaded;
+            PlatformSpecific.FFmpeg.GetInputFileStream = (string name) =>
+            {
+                return FFmpegFileStream.OpenWrite(name);
+            };
+            FFmpeg.ProgressChanged += (sender, eventArgs) => { PlatformSpecific.FFmpeg.RaiseProgressChanged(sender, eventArgs); };
 
             Windows.UI.Xaml.Application.Start(_ => _app = new App());
 

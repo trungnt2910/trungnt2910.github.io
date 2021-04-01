@@ -54,6 +54,7 @@
       <DependentUpon>YoutubeDownloader.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Pages\Tools\YoutubeDownloaderImpl\YoutubeDownloaderViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PlatformSpecific\FFmpeg.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)PlatformSpecific\Http.cs" />
   </ItemGroup>
   <ItemGroup>

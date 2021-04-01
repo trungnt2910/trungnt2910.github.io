@@ -44,7 +44,7 @@ namespace MyWorld.Pages.Tools
 
         private async void DownloadProgressChanged(object sender, EventArgs args)
         {
-            await Window.Current.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () => DownloadProgressBar.Value = ViewModel.Downloaded * 100.0 / ViewModel.VideoSize);
+            await Window.Current.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () => DownloadProgressBar.Value = ViewModel.ProgressBarValue);
         }
     }
 }

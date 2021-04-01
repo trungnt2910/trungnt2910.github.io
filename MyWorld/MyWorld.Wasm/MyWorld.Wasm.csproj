@@ -13,13 +13,41 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="Assets\SplashScreen.png" />
+    <Content Include="WasmScripts\node_modules\%40ffmpeg\core\package-lock.json" />
+    <Content Include="WasmScripts\node_modules\%40ffmpeg\core\package.json" />
+    <Content Include="WasmScripts\node_modules\%40ffmpeg\ffmpeg\package.json" />
+    <Content Include="WasmScripts\node_modules\.package-lock.json" />
+    <Content Include="WasmScripts\node_modules\is-url\package.json" />
+    <Content Include="WasmScripts\node_modules\node-fetch\package.json" />
+    <Content Include="WasmScripts\node_modules\regenerator-runtime\package.json" />
+    <Content Include="WasmScripts\node_modules\resolve-url\bower.json" />
+    <Content Include="WasmScripts\node_modules\resolve-url\component.json" />
+    <Content Include="WasmScripts\node_modules\resolve-url\package.json" />
   </ItemGroup>
   <ItemGroup>
     <UpToDateCheckInput Include="..\MyWorld.Shared\**\*.xaml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Remove="WasmScripts\node_modules\**" />
+    <Content Remove="WasmScripts\node_modules\**" />
+    <EmbeddedResource Remove="WasmScripts\node_modules\**" />
+    <None Remove="WasmScripts\node_modules\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="WasmScripts\package-lock.json" />
+    <Content Remove="WasmScripts\package.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="WasmScripts\ffmpeg.min.js" />
+    <None Remove="WasmScripts\FFmpegLoader.js" />
+    <None Remove="WasmScripts\require.js" />
+    <None Remove="WasmScripts\WasmWebSockets.js" />
+  </ItemGroup>
+  <ItemGroup>
     <EmbeddedResource Include="WasmCSS\Fonts.css" />
     <EmbeddedResource Include="WasmScripts\AppManifest.js" />
+    <EmbeddedResource Include="WasmScripts\FFmpegLoader.js" />
+    <EmbeddedResource Include="WasmScripts\require.js" />
   </ItemGroup>
   <ItemGroup>
     <LinkerDescriptor Include="LinkerConfig.xml" />
@@ -46,6 +74,9 @@
     <PackageReference Include="Uno.Wasm.Bootstrap" Version="1.3.4" />
     <PackageReference Include="Uno.Wasm.Bootstrap.DevServer" Version="1.3.4" />
     <PackageReference Include="YoutubeExplode" Version="5.1.9" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="WasmScripts\WasmWebSockets.js" />
   </ItemGroup>
   <Import Project="..\MyWorld.Shared\MyWorld.Shared.projitems" Label="Shared" Condition="Exists('..\MyWorld.Shared\MyWorld.Shared.projitems')" />
 </Project>
