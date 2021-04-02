@@ -53,6 +53,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Pages\Tools\YoutubeDownloader.xaml.cs">
       <DependentUpon>YoutubeDownloader.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\Tools\YoutubeDownloaderImpl\VideoDownloadInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\Tools\YoutubeDownloaderImpl\YoutubeDownloaderViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)PlatformSpecific\FFmpeg.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)PlatformSpecific\Http.cs" />

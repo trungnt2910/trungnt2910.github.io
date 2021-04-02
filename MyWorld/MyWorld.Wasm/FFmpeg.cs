@@ -17,12 +17,24 @@ namespace MyWorld.Wasm
         {
             await WebAssemblyRuntime.InvokeAsync($@"
                 ffmpeg.run('-i', '{WebAssemblyRuntime.EscapeJs(video)}', '-i', '{WebAssemblyRuntime.EscapeJs(audio)}', '-c', 'copy', '{WebAssemblyRuntime.EscapeJs(output)}');");
-            return FFmpegFileStream.OpenRead(output);
+            return FFmpegFile.OpenRead(output);
+        }
+        /// <summary>
+        /// Runs the FFmpeg application, as if invoked on the command line.
+        /// </summary>
+        /// <param name="param">Command line arguments. The last argument MUST be the output file.</param>
+        /// <returns>A Stream containing the output file.</returns>
+        public static async Task<Stream> RunAsync(params string [] param)
+        {
+            await WebAssemblyRuntime.InvokeAsync($@"
+                ffmpeg.run({string.Join(",", param.Select(x => $@"'{WebAssemblyRuntime.EscapeJs(x)}'"))});
+            ");
+            return FFmpegFile.OpenRead(param.Last());
         }
         private static void LibraryLog(string message)
         {
             // Console spamming is not good 
-            //Console.WriteLine($"FFmpeg: {message}");
+            System.Diagnostics.Debug.WriteLine($"FFmpeg: {message}");
         }
         private static void InteropLog(string message)
         {

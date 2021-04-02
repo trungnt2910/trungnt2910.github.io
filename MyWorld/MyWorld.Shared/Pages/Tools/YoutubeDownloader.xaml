@@ -6,9 +6,10 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    xmlns:impl="using:MyWorld.Pages.Tools.YoutubeDownloaderImpl"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+    
     <ScrollViewer>
         <StackPanel>
             <TextBlock Style="{StaticResource HeaderTextBlockStyle}" Text="Free online Youtube Downloader"/>
@@ -50,7 +51,7 @@
                                   PlaceholderText="Quality" 
                                   HorizontalAlignment="Stretch" 
                                   ItemsSource="{x:Bind ViewModel.Qualities, Mode=OneWay}" 
-                                  Visibility="{x:Bind ViewModel.QualitiesSelectorVisibility, Mode=OneWay}"
+                                  Visibility="{x:Bind ViewModel.QualitiesSelectorVisibility,                              Mode=OneWay}"
                                   IsEnabled="{x:Bind ViewModel.IsSelectorEnabled, Mode=OneWay}"
                                   Grid.Row="0" Grid.Column="0"/>
                     </Grid>

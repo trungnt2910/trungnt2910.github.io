@@ -8,36 +8,24 @@ using Uno.Foundation;
 
 namespace MyWorld.Wasm
 {
-    public class FFmpegFileStream : Stream, IDisposable
+    public class FFmpegFileStream : Stream
     {
         private bool canWrite = false;
         private bool canRead = false;
+        private bool closed = false;
         private long pos;
         private string uuid;
         private string fileName;
-        private FFmpegFileStream(string fileName, string mode)
+
+        internal FFmpegFileStream(string fileName, string mode)
         {
             if (!FFmpeg.Loaded)
                 throw new InvalidOperationException("Cannot use FFmpegFileStream before initializing FFmpeg.");
             uuid = System.Guid.NewGuid().ToString();
             this.fileName = fileName;
             WebAssemblyRuntime.InvokeJS($@"fileStreams['{uuid}'] = ffmpeg.FS('open', '{WebAssemblyRuntime.EscapeJs(fileName)}', '{mode}')");
-        }
-
-        public static FFmpegFileStream OpenRead(string fileName)
-        {
-            return new FFmpegFileStream(fileName, "r")
-            {
-                canRead = true
-            };
-        }
-
-        public static FFmpegFileStream OpenWrite(string fileName)
-        {
-            return new FFmpegFileStream(fileName, "w")
-            {
-                canWrite = true
-            };
+            canWrite = mode.Contains("r");
+            canRead = mode.Contains("w");
         }
 
         public override void SetLength(long pos)
@@ -95,19 +83,20 @@ namespace MyWorld.Wasm
             get => int.Parse(WebAssemblyRuntime.InvokeJS($@"ffmpeg.FS('stat', '{WebAssemblyRuntime.EscapeJs(fileName)}').size.toString()"));
         }
 
-        public override void Close()
+        protected override void Dispose(bool disposing)
         {
-            base.Close();
-            WebAssemblyRuntime.InvokeJS($@"
-            {{
-                ffmpeg.FS('close', fileStreams['{uuid}']);
-            }}");
-        }
-
-        public new void Dispose()
-        {
-            Close();
-            WebAssemblyRuntime.InvokeJS($@"delete fileStreams['{uuid}']");
+            if (disposing)
+            {
+                if (uuid != null)
+                {
+                    WebAssemblyRuntime.InvokeJS($@"
+                    {{
+                        ffmpeg.FS('close', fileStreams['{uuid}']);
+                    }}");
+                    WebAssemblyRuntime.InvokeJS($@"delete fileStreams['{uuid}']");
+                    uuid = null;
+                }
+            }
         }
     }
 }

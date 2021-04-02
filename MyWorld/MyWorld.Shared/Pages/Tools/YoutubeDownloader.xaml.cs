@@ -39,7 +39,7 @@ namespace MyWorld.Pages.Tools
 
         private async void DownloadButton_Click(object sender, RoutedEventArgs e)
         {
-            await ViewModel.DownloadVideoAsync(QualitySelector.SelectedItem as IVideoStreamInfo, DownloadProgressChanged);
+            await ViewModel.DownloadVideoAsync(QualitySelector.SelectedItem as VideoDownloadInfo, DownloadProgressChanged);
         }
 
         private async void DownloadProgressChanged(object sender, EventArgs args)
