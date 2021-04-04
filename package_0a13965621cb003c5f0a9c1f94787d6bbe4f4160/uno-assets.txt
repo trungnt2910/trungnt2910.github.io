@@ -1,0 +1,7 @@
+Assets/SplashScreen.png
+Assets/facebook.png
+Assets/github.png
+Assets/linkedin.png
+Assets/stackoverflow.png
+Assets/Tools/CodeHashifier/CodeHashifier.ico
+Assets/Tools/CodeHashifier/OriginalScreenshot.png
