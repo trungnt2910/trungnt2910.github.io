@@ -284,6 +284,7 @@ namespace MyWorld.Pages.Tools.YoutubeDownloaderImpl
             {
                 var savePicker = new Windows.Storage.Pickers.FileSavePicker();
                 savePicker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.VideosLibrary;
+                // FIXME: .mp4, .com, .exe, .bin
                 savePicker.FileTypeChoices.Add("Video", new List<string>() { $".{videoStreamInfo.Container}" });
                 savePicker.SuggestedFileName = currentVideo.Title;
                 StorageFile file = await savePicker.PickSaveFileAsync();
