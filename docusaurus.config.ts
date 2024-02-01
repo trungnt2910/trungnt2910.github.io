@@ -57,7 +57,8 @@ const config: Config = {
       title: 'My Reality',
       logo: {
         alt: 'My Reality',
-        src: 'img/logo.svg',
+        src: 'img/logo-black.svg',
+        srcDark: 'img/logo-white.svg'
       },
       items: [
         {
