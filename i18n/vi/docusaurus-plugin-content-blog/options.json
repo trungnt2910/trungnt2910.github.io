@@ -1,0 +1,14 @@
+{
+  "title": {
+    "message": "Thế giới của tôi",
+    "description": "The title for the blog used in SEO"
+  },
+  "description": {
+    "message": "Những bài viết của Trung về phát triển phần mềm và vài điều lặt vặt khác",
+    "description": "The description for the blog used in SEO"
+  },
+  "sidebar.title": {
+    "message": "Bài viết gần đây",
+    "description": "The label for the left sidebar"
+  }
+}
