@@ -1,10 +1,10 @@
 {
   "link.title.Projects": {
-    "message": "Dự án",
+    "message": "プロジェクト",
     "description": "The title of the footer links column with title=Projects in the footer"
   },
   "link.title.Connect with me": {
-    "message": "Kết nối với mình",
+    "message": "僕とつながる",
     "description": "The title of the footer links column with title=Connect with me in the footer"
   },
   "link.item.label.lxmonika": {
