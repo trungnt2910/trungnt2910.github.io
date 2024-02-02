@@ -17,7 +17,7 @@ export default function GiscusComponent() {
                 category="Blogs"
                 categoryId="DIC_kwDOLMhw3c4Cc3fr"
                 mapping="specific"
-                term={location.pathname.split("/").at(-1)}
+                term={location.pathname.replace(/^\/+|\/+$/g, "").split("/").at(-1)}
                 strict="0"
                 reactionsEnabled="1"
                 emitMetadata="1"
