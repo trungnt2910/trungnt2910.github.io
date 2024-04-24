@@ -97,7 +97,7 @@ console.log(window.foo);
 
 should output:
 
-```
+```js
 2910
 2910
 ```
@@ -315,7 +315,7 @@ Object.prototype.constructor(2910);
 
 Output:
 
-```
+```js
 Number {2910}
 Number {2910}
 ```
@@ -324,13 +324,13 @@ Number {2910}
 
 However, [others aren't](https://stackoverflow.com/questions/30689817/es6-call-class-constructor-without-new-keyword):
 
-```
+```js
 Set.prototype.constructor("lxmonika");
 ```
 
 Output:
 
-```
+```js
 Uncaught TypeError: Constructor Set requires 'new'
     at Set (<anonymous>)
     at <anonymous>:1:15
@@ -417,9 +417,10 @@ clever solution for this.
 #### `eval`
 
 We have managed to avoid `eval` all the way until here, both because of its bad reputation and the
-fact that many pages have content policies preventing code from accessing that function. `eval` is
-so powerful that it alone could have solved all our method call/property get/property set issues
-above, and it can also call constructors for us:
+fact that many pages have
+[content security policies](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP) preventing code
+from accessing that function. `eval` is so powerful that it alone could have solved all our method
+call/property get/property set issues above, and it can also call constructors for us:
 
 ```cs
 await using var set = await JSRuntime.InvokeAsync<IJSObjectReference>(
