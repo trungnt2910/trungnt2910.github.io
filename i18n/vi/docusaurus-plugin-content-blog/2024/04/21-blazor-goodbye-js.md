@@ -448,7 +448,7 @@ constructByName("Set", "lxmonika");
 
 Nhưng thật ý, làm gì mà đang dùng Blazor mà lại cần một cái `Set` của JavaScript đến mức vậy?
 
-## Future .NET
+## .NET của tương lai
 
 ASP.NET Core có [dự định](https://github.com/dotnet/aspnetcore/issues/31151) hỗ trợ truy cập trình
 khởi tạo, gọi các hàm, và đọc/viết giá trị từ chương trình Blazor.
