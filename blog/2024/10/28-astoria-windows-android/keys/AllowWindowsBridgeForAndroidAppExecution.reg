@@ -1,0 +1,12 @@
+Windows Registry Editor Version 5.00
+
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\default\ApplicationManagement\AllowWindowsBridgeForAndroidAppExecution]
+"AllowedEnrollmentTypes"=hex(b):ff,ff,ff,ff,00,00,00,00
+"HighRange"=dword:00000002
+"LowRange"=dword:00000000
+"MergeAlgorithm"=dword:00000001
+"PolicyType"=dword:00000004
+"value"=dword:00000002
+"WNFStateName1"=dword:a3bd3875
+"WNFStateName2"=dword:13920028

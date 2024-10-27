@@ -1,0 +1,181 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\AppId\{86a8127c-3121-4879-bef7-08df0ed05a76}]
+@="AoWSupportHandler"
+"AccessPermission"=hex:01,00,04,80,7c,00,00,00,8c,00,00,00,00,00,00,00,14,00,\
+  00,00,02,00,68,00,03,00,00,00,00,00,14,00,0b,00,00,00,01,01,00,00,00,00,00,\
+  05,0a,00,00,00,00,00,14,00,0b,00,00,00,01,01,00,00,00,00,00,05,12,00,00,00,\
+  00,00,38,00,0b,00,00,00,01,0a,00,00,00,00,00,0f,03,00,00,00,00,04,00,00,ff,\
+  49,03,56,39,a9,3b,4d,c8,ae,a5,3c,dc,55,69,64,41,3d,d6,05,9f,f3,20,7a,4c,c3,\
+  f0,09,33,a5,0b,69,01,02,00,00,00,00,00,05,20,00,00,00,20,02,00,00,01,02,00,\
+  00,00,00,00,05,20,00,00,00,20,02,00,00
+"AppIDFlags"=dword:00000008
+"RunAs"="Interactive User"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\AppId\{a4557610-bef7-40d6-844d-83dc4e1ea6f2}]
+"AccessPermission"=hex:01,00,14,80,8c,00,00,00,9c,00,00,00,14,00,00,00,30,00,\
+  00,00,02,00,1c,00,01,00,00,00,11,00,14,00,04,00,00,00,01,01,00,00,00,00,00,\
+  10,00,10,00,00,02,00,5c,00,04,00,00,00,00,00,14,00,0b,00,00,00,01,01,00,00,\
+  00,00,00,05,04,00,00,00,00,00,14,00,0b,00,00,00,01,01,00,00,00,00,00,05,0a,\
+  00,00,00,00,00,14,00,0b,00,00,00,01,01,00,00,00,00,00,05,12,00,00,00,00,00,\
+  18,00,0b,00,00,00,01,02,00,00,00,00,00,0f,02,00,00,00,01,00,00,00,01,02,00,\
+  00,00,00,00,05,20,00,00,00,20,02,00,00,01,02,00,00,00,00,00,05,20,00,00,00,\
+  20,02,00,00
+"LaunchPermission"=hex:01,00,14,80,8c,00,00,00,9c,00,00,00,14,00,00,00,30,00,\
+  00,00,02,00,1c,00,01,00,00,00,11,00,14,00,04,00,00,00,01,01,00,00,00,00,00,\
+  10,00,10,00,00,02,00,5c,00,04,00,00,00,00,00,14,00,0b,00,00,00,01,01,00,00,\
+  00,00,00,05,04,00,00,00,00,00,14,00,0b,00,00,00,01,01,00,00,00,00,00,05,0a,\
+  00,00,00,00,00,14,00,0b,00,00,00,01,01,00,00,00,00,00,05,12,00,00,00,00,00,\
+  18,00,0b,00,00,00,01,02,00,00,00,00,00,0f,02,00,00,00,01,00,00,00,01,02,00,\
+  00,00,00,00,05,20,00,00,00,20,02,00,00,01,02,00,00,00,00,00,05,20,00,00,00,\
+  20,02,00,00
+"LocalService"="AoWSM"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{4abf46cc-e506-434c-afa4-9927f3668e60}]
+@="PSFactoryBuffer"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{4abf46cc-e506-434c-afa4-9927f3668e60}\InProcServer32]
+@="C:\\Windows\\System32\\aow\\AoWSMProxyStub.dll"
+"ThreadingModel"="Both"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{7930ac88-f36c-44fd-8202-8b95b5b06acb}]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{7930ac88-f36c-44fd-8202-8b95b5b06acb}\InProcServer32]
+@=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,\
+  00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,61,00,6f,00,\
+  77,00,5c,00,41,00,6f,00,77,00,46,00,72,00,61,00,6d,00,65,00,77,00,6f,00,72,\
+  00,6b,00,2e,00,64,00,6c,00,6c,00,00,00
+"ThreadingModel"="Both"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{86a8127c-3121-4879-bef7-08df0ed05a76}]
+@="AoWSupportHandler"
+"AppID"="{86a8127c-3121-4879-bef7-08df0ed05a76}"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{86a8127c-3121-4879-bef7-08df0ed05a76}\LocalServer32]
+@="C:\\Windows\\System32\\aow\\aowhost.exe"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{910065f3-db2c-41c8-a50a-aa258afac2e8}]
+@="AoWUserSession"
+"AppID"="{a4557610-bef7-40d6-844d-83dc4e1ea6f2}"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{da3739a3-46a5-4e9b-b2b5-9545eeea93e6}]
+@="AoWAppActivatedRuntime"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{da3739a3-46a5-4e9b-b2b5-9545eeea93e6}\InProcServer32]
+@=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,\
+  00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,61,00,6f,00,\
+  77,00,5c,00,41,00,6f,00,77,00,46,00,72,00,61,00,6d,00,65,00,77,00,6f,00,72,\
+  00,6b,00,2e,00,64,00,6c,00,6c,00,00,00
+"ThreadingModel"="Both"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{e213b5d9-4ee5-4e2d-945e-6508c1d050fb}]
+@="AoWBackgroundTaskRuntime"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{e213b5d9-4ee5-4e2d-945e-6508c1d050fb}\InProcServer32]
+@=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,\
+  00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,61,00,6f,00,\
+  77,00,5c,00,41,00,6f,00,77,00,46,00,72,00,61,00,6d,00,65,00,77,00,6f,00,72,\
+  00,6b,00,2e,00,64,00,6c,00,6c,00,00,00
+"ThreadingModel"="Both"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Interface\{292997c8-fa0d-4fb6-8bc5-366f9382cc81}]
+@="IAoWInstance"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Interface\{292997c8-fa0d-4fb6-8bc5-366f9382cc81}\ProxyStubClsid32]
+@="{4abf46cc-e506-434c-afa4-9927f3668e60}"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Interface\{355C3D14-8434-4F35-8377-FDD880F5758A}]
+@="IAoWAppTokenProvider"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Interface\{355C3D14-8434-4F35-8377-FDD880F5758A}\ProxyStubClsid32]
+@="{4abf46cc-e506-434c-afa4-9927f3668e60}"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Interface\{38530252-eb81-4164-8854-89e763e44514}]
+@="IAoWSupportHandler"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Interface\{38530252-eb81-4164-8854-89e763e44514}\ProxyStubClsid32]
+@="{4abf46cc-e506-434c-afa4-9927f3668e60}"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Interface\{623bbb59-1aa9-46b2-a2e6-e4a749305fcd}]
+@="IAoWSession"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Interface\{623bbb59-1aa9-46b2-a2e6-e4a749305fcd}\ProxyStubClsid32]
+@="{4abf46cc-e506-434c-afa4-9927f3668e60}"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Interface\{75888062-7a77-46c0-9494-e59f2dd4df0f}]
+@="IAoWPackageEnum"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Interface\{75888062-7a77-46c0-9494-e59f2dd4df0f}\ProxyStubClsid32]
+@="{4abf46cc-e506-434c-afa4-9927f3668e60}"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Interface\{782b2d14-179c-4540-bfc8-3599213f764e}]
+@=" IAoWInstanceLifetime"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Interface\{782b2d14-179c-4540-bfc8-3599213f764e}\ProxyStubClsid32]
+@="{4abf46cc-e506-434c-afa4-9927f3668e60}"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Interface\{8ab860cb-32ff-4903-8f2a-5ca76ed80301}]
+@="IAoWSession2"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Interface\{8ab860cb-32ff-4903-8f2a-5ca76ed80301}\ProxyStubClsid32]
+@="{4abf46cc-e506-434c-afa4-9927f3668e60}"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Interface\{a0c5d6c2-48ce-4429-a73c-5c4df8cc2a54}]
+@="IAoWInstanceApplicationControl"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Interface\{a0c5d6c2-48ce-4429-a73c-5c4df8cc2a54}\ProxyStubClsid32]
+@="{4abf46cc-e506-434c-afa4-9927f3668e60}"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Interface\{a1411706-05ec-4f1a-914a-31f7e8b12a9e}]
+@="IAoWInstanceExecutionReference"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Interface\{a1411706-05ec-4f1a-914a-31f7e8b12a9e}\ProxyStubClsid32]
+@="{4abf46cc-e506-434c-afa4-9927f3668e60}"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Interface\{b65c0692-57f8-472d-b3e4-cd754ccdcc6a}]
+@="IAoWSupportHandlerHostConfig"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Interface\{b65c0692-57f8-472d-b3e4-cd754ccdcc6a}\ProxyStubClsid32]
+@="{4abf46cc-e506-434c-afa4-9927f3668e60}"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Interface\{c60b7e58-8fe7-4a9c-a86e-42ca6926cc40}]
+@="IAoWDebugService"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Interface\{c60b7e58-8fe7-4a9c-a86e-42ca6926cc40}\ProxyStubClsid32]
+@="{4abf46cc-e506-434c-afa4-9927f3668e60}"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Interface\{e6521960-71d3-4e9f-8ecd-bb87a99313f9}]
+@="IAoWSupportNetworking"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Interface\{e6521960-71d3-4e9f-8ecd-bb87a99313f9}\ProxyStubClsid32]
+@="{4abf46cc-e506-434c-afa4-9927f3668e60}"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\SecurityManager\FullTrust]
+"C:\\windows\\System32\\aow\\AowHost.exe -Embedding"=hex(7):41,00,6f,00,77,00,\
+  48,00,6f,00,73,00,74,00,00,00,00,00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\SecurityManager\FullTrust\AowHost]
+"Account"="DefApps"
+"FullTrustBinaries"=hex(7):43,00,3a,00,5c,00,77,00,69,00,6e,00,64,00,6f,00,77,\
+  00,73,00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,61,00,\
+  6f,00,77,00,5c,00,41,00,6f,00,77,00,48,00,6f,00,73,00,74,00,2e,00,65,00,78,\
+  00,65,00,00,00,00,00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\AOW]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\AOW\Instance]
+"CoInitializeSecurityAppID"="{a4557610-bef7-40d6-844d-83dc4e1ea6f2}"
+"Flags"=dword:00000038
+"FrameworkDll"=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,\
+  00,74,00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,\
+  61,00,6f,00,77,00,5c,00,41,00,6f,00,77,00,46,00,72,00,61,00,6d,00,65,00,77,\
+  00,6f,00,72,00,6b,00,2e,00,64,00,6c,00,6c,00,00,00
+"WimBuildTag"="20150910.2"
+"WimPath"=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,\
+  74,00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,61,\
+  00,6f,00,77,00,5c,00,61,00,6f,00,77,00,2e,00,77,00,69,00,6d,00,00,00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsRuntime\AllowedCOMCLSIDs\{da3739a3-46a5-4e9b-b2b5-9545eeea93e6}]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsRuntime\AllowedCOMCLSIDs\{e213b5d9-4ee5-4e2d-945e-6508c1d050fb}]
+
