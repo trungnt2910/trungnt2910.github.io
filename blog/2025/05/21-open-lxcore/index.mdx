@@ -1,0 +1,184 @@
+---
+slug: open-lxcore
+title: Why we don't have LxCore
+authors: trungnt2910
+tags: [Windows, lxss, WSL, lxcore]
+---
+
+<head>
+    <meta property="og:image" content={require('./wsl.png').default} />
+    <meta name="twitter:image" content={require('./wsl.png').default} />
+</head>
+
+Microsoft recently announced the first [open source](https://blogs.windows.com/windowsdeveloper/2025/05/19/the-windows-subsystem-for-linux-is-now-open-source/)
+[release](https://github.com/microsoft/WSL/commit/697572d664c9371abbc53cab9cf7b4b32be1980e) of the
+Windows Subsystem for Linux (WSL).
+
+This has sparked great enthusiasm in the community, especially regular WSL2 users or those
+interested in the user-mode components facilitating Windows/Linux interop. However, long-term
+WSL enthusiasts will notice one major missing component: `lxcore.sys`.
+
+This post explores why we don't have LxCore (yet), why we **should**, and what Microsoft can do.
+
+<figure>
+    <img src={require('./wsl.png').default}
+         alt="WSL"
+         style={{height: "32vmin", width: "100%", objectFit: "cover" }}/>
+    <figcaption style={{fontStyle: "italic", textAlign: "center"}}>
+        WSL Logo -
+        [Source](https://github.com/microsoft/WSL/blob/master/Images/SplashScreen.scale-100.png) -
+        [MIT License](https://github.com/microsoft/WSL/blob/master/LICENSE).
+    </figcaption>
+</figure>
+
+<!-- truncate -->
+
+## What is LxCore
+
+LxCore (`lxcore.sys`) is the core kernel-mode component of WSL.
+
+It is a
+"[Pico provider](https://learn.microsoft.com/en-us/archive/blogs/wsl/pico-process-overview#pico-processes-and-providers)" -
+a kernel-mode driver that powers WSL1 "Pico processes". LxCore is responsible for creating these
+special processes, setting up the runtime environment, and handling "system calls" made by Linux
+user-mode binaries.
+
+LxCore also hosts the LXSS interop device (`\Device\LXSS`), which plays a vital role in
+Windows/Linux interop, even for the VM-based WSL2 architecture.
+
+<figure>
+    ![Overview of Kernel-mode Components of WSL.](./wsl_components.svg)
+    <figcaption style={{fontStyle: "italic", textAlign: "center"}}>
+        Overview of Kernel-mode Components of WSL.
+    </figcaption>
+</figure>
+
+## Why is it left behind
+
+### It's not in the repo
+
+The [official announcement](https://blogs.windows.com/windowsdeveloper/2025/05/19/the-windows-subsystem-for-linux-is-now-open-source/)
+from the Windows team says:
+
+> The following components are still part of the Windows image and are not open sourced at this time:
+> - Lxcore.sys, the kernel side driver that powers WSL 1
+> - P9rdr.sys and p9np.dll, which runs the “\\wsl.localhost” filesystem redirection (from Windows to Linux)
+
+Since the Windows 10 era, Microsoft has had a trend of moving core Windows components to separate
+packages on the Microsoft Store to allow more flexible release cycles - updates can be delivered
+independent from Windows feature releases.
+
+These components become separate repositories, some of which get open-sourced, such as the
+[Calculator](https://github.com/microsoft/calculator) or the
+[Console/Terminal](https://github.com/microsoft/terminal).
+
+The same happened to WSL in
+[2021](https://github.com/microsoft/WSL/commit/697572d664c9371abbc53cab9cf7b4b32be1980e). The
+codebase got separated, and after some time, the package got published to the Microsoft Store.
+However, this package
+[did not include WSL1](https://devblogs.microsoft.com/commandline/the-windows-subsystem-for-linux-in-the-microsoft-store-is-now-generally-available-on-windows-10-and-11/#what-this-means-for-wsl-1-and-the-in-windows-version-of-wsl):
+
+> Support for running WSL 1 distros still requires the “Windows Subsystem for Linux” optional component.
+
+This move is understandable - while Windows usermode binaries (such as `wsl.exe`) can become shims
+pointing to Microsoft Store packages (just like what `calc.exe` does), drivers, especially ones
+loaded on early boot, have to be in the Windows system directory.
+
+So, `lxcore.sys` (and other kernel components) is... simply not there and is highly unlikely to be
+moved to that repo.
+
+### It's not buildable (yet)
+
+`lxcore.sys` is based on the private Pico processes API declared in `ntosp.h`
+(probably "NT OS Private header"). To build `lxmonika`, a project that relies on the similar API,
+a lot of reverse engineering of
+[private structures](https://github.com/trungnt2910/lxmonika/blob/master/lxmonika/include/pico.h)
+have to be done.
+
+Pico processes are just a start. After that is how to handle processes, threads, memory, input,
+and so on. Each of this area opens a whole new field of undocumented interfaces, such as threads
+and signals implemented using [APCs](https://repnz.github.io/posts/apc/kernel-user-apc-api/) or
+console I/O made through an
+[undocumented ConDrv device](https://github.com/trungnt2910/lxmonika/blob/e981eb77535b3fccb23322ae15bf6f1a82830100/lxmonika/src/condrv.cpp#L89).
+
+### It's impossible to install
+... at least, not without fragile hacks.
+
+Pico processes are available to only an elite few: the so-called "Core" drivers, determined by a
+hard-coded list in `winload`, `OslCoreDriverServices`. Among the lucky drivers are `lxss.sys`, which
+has a hard dependency on `lxcore.sys` and is responsible for bootstrapping the latter.
+
+To install a home-grown LxCore, replacing the original `lxcore.sys` is necessary. We can also
+replace one of the core drivers, which is what `lxmonika`
+[does](https://github.com/trungnt2910/lxmonika/blob/e981eb77535b3fccb23322ae15bf6f1a82830100/monika/src/Commands/Install.cpp#L26).
+
+If anything goes wrong during boot, or if a Windows Update messes something up, the system will get
+stuck in a bootloop.
+
+### It's risky
+
+In the early days of WSL, `lxcore.sys` was the frequent cause of BSoDs and targets for exploits.
+This is expected for a highly privileged driver rapidly growing in complex features.
+
+While the BSoDs have virtually disappeared in the 2020s, the complexity of the driver makes it hard
+to guarantee that no more exploits exist and that none can fall into the wrong hands as the source
+for this huge attack surface gets laid bare to the public.
+
+## Why we should still have it
+
+It is entirely fine to have the core driver kept out of the Microsoft Store package and open-sourced
+outside of the main repo. Since there is no longer active development, commits and releases are not
+of concern.
+
+It is entirely fine if nobody could build and install the code when released. Microsoft can choose
+not to provide any support, and experts and enthusiasts can
+[quickly fill in the gaps](https://www.geoffchappell.com/studies/windows/km/index.htm?tx=158).
+
+It is (probably?) fine to have the source for LxCore publicly audited. With the feature set frozen
+for nearly a decade, the driver should now be much more mature. Furthermore, with the wider adoption
+of WSL2 and the WSL Store package, LxCore should mostly be disabled by default, minimizing the
+impact of vulnerabilities.
+
+Such a technical marvel as WSL1 can open up a wide range of research topics and have various
+potential applications in the field of operating systems and optimizing compatibility layers. It
+would be a waste for the WSL1 codebase to stay in Microsoft's drawers for years collecting dust.
+Opening up this gem to the community will breathe in new life for the years of work and probably
+thousands of commits by dozens of team members.
+
+## What can Microsoft do
+
+I suggest dumping the WSL1 "reference source", similar to what has been done with the
+[.NET Framework BCL](https://github.com/microsoft/referencesource). This repo can be read-only,
+have no build support, contain no version history - just the source code.
+
+From there, we - the community of enthusiasts - can carry on this project, something that Microsoft
+has [abandoned since 2019](https://github.com/microsoft/WSL/discussions/4022).
+
+This would also not be the first time Microsoft releases the reference source code for a built-in
+Windows driver. [`NetAdapterCx.sys`](https://github.com/microsoft/Network-Adapter-Class-Extension/)
+is already up there, in the same "reference source" style.
+
+## What's next for `lxmonika`
+
+While I have
+[previously stated](https://github.com/trungnt2910/lxmonika/discussions/5#discussioncomment-11131893)
+that `lxmonika` will not be a drop-in replacement for WSL1, there is a lot to learn from WSL1's
+architecture. The recent source and [documentation](https://wsl.dev) release makes this learning
+easier than ever.
+
+A potential `lxcore.sys` source code can allow an "enhanced" LxCore running as a `lxmonika.sys`
+provider. The provider can be patched to allow hosting
+[User Mode Linux](https://github.com/microsoft/WSL/issues/1692), acting as a temporary
+implementation as more research being done done on Lilyx - a provider based on the full Linux
+kernel.
+
+## Acknowledgements
+
+Thanks to the **50+ people** from [Project Reality](https://reality.trungnt2910.com/discord) and the
+wider community for supporting me and my
+[discussion](https://github.com/microsoft/WSL/discussions/12922) on the WSL repo. In under 24 hours,
+this has become the top 3 most upvoted discussions of all time there.
+
+Thanks to Microsoft and everyone in the open-source community for the recent source release. While
+it did not contain what I really desire, it gave me the enthusiasm for writing this post after
+more than half a year of silence.
